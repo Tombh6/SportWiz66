@@ -1,0 +1,113 @@
+﻿@model IEnumerable<SportWiz66.Models.Account>
+
+@{ ViewData["Title"] = "Accounts Management";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="container">
+    <h4>Accounts</h4>
+    <form asp-action="Filter" id="filterform">
+        <div class="form-box f-right">
+            <input id="filter" name="term" autocomplete="off" class="form-control" placeholder="search names..." />
+        </div>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RegistrationDate)
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Username)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Type)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RegistrationDate)
+    </td>
+    <td>
+        <a class="black-color" asp-action="Edit" asp-route-id="@item.Id">Edit</a>|
+        <a class="black-color" asp-action="Details" asp-route-id="@item.Id">Details</a>|
+        <a class="black-color" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+</tr>            }
+        </tbody>
+    </table>
+
+
+</div>
+
+@section Scripts{
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="~/js/filter.js"></script>
+
+    <script id="restuls" type="text/html">
+        <tr>
+            <td>
+                ${id}
+            </td>
+            <td>
+                ${username}
+            </td>
+            <td>
+                ${firstname}
+            </td>
+            <td>
+                ${lastname}
+            </td>
+            <td>
+                ${email}
+            </td>
+            <td>
+                ${type}
+            </td>
+            <td>
+                ${registrationdate}
+            </td>
+            <td>
+                <a class="black-color" href="/Accounts/Edit/${id}">Edit</a>|
+                <a class="black-color" href="/Accounts/Details/${id}">Details</a>|
+                <a class="black-color" href="/Accounts/Delete/${id}">Delete</a>
+            </td>
+        </tr>
+    </script>
+}
+

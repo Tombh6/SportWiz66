@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SportWiz66.Models.Product>
+
+@{ ViewData["Title"] = "Statistics"; }
+
+<!-- CSS here -->
+<link rel="stylesheet" href="~/css/site.css">
+
+<div class="container">
+    <h4>Statistics</h4>
+
+
+    <table class="table">
+        <tr>
+            <th colspan="3">
+                <h2>By Orders</h2>
+                <div id="chart"></div>
+            </th>
+        </tr>
+    </table>
+
+    <table class="table">
+        <tr>
+            <th colspan="3">
+                <h2>By Views</h2>
+                <div id="chart2"></div>
+            </th>
+        </tr>
+    </table>
+</div>
+
+@section Scripts{
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="~/js/stats.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+}

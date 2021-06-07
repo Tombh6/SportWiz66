@@ -1,0 +1,30 @@
+﻿@model SportWiz66.Models.Location
+
+@{ ViewData["Title"] = "Details"; }
+
+
+<div class="container">
+    <div>
+        <h4>Location Details</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Adress)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Adress)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a class="black-color" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a class="black-color" asp-action="Admin">Back to List</a>
+    </div>
+
+</div>

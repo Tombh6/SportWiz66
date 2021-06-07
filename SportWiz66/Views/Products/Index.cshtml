@@ -1,0 +1,109 @@
+﻿@model IEnumerable<SportWiz66.Models.Product>
+
+@{ ViewData["Title"] = "Index"; }
+
+
+<!-- slider Area Start-->
+<div class="slider-area ">
+    <!-- Mobile Menu -->
+    <div class="single-slider slider-height2 d-flex align-items-center" data-background="assets/img/hero/category.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+                        <h2>Products</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- slider Area End-->
+<!-- Latest Products Start -->
+<section class="latest-product-area latest-padding">
+    <div class="container">
+        <div class="row product-btn d-flex justify-content-between">
+            <div class="properties__button">
+                <!--Nav Brands Button  -->
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <select id="BrandId" class="select" asp-items="@ViewBag.Brands">
+                            <option value="null" disabled selected>Brand</option>
+                            <option value="0">All</option>
+                        </select>
+                        <select id="CategoryId" class="select" asp-items="@ViewBag.Categories">
+                            <option value="null" disabled selected>Category</option>
+                            <option value="0">All</option>
+                        </select>
+                        <select id="ModeId" class="select">
+                            <option value="null" disabled selected>Mode</option>
+                            <option value="0">Regular</option>
+                            <option value="1">Just For You!</option>
+                        </select>
+                    </div>
+                </nav>
+                <!--End Nav Button  -->
+            </div>
+            <div class="select-this d-flex">
+                <select id="Sort" class="select">
+                    <option value="null" disabled selected>Sort</option>
+                    <option value="newest">What's new</option>
+                    <option value="alphabetical">Alphabetical</option>
+                    <option value="low2high">Price low to high</option>
+                    <option value="high2low">Price high to low</option>
+
+                </select>
+            </div>
+        </div>
+        <!-- Nav Card -->
+        <div class="tab-content" id="nav-tabContent">
+            <!-- card one -->
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="row" id="productInsertion">
+
+                    <!-- JS Insert Products HERE! -->
+
+                </div>
+            </div>
+        </div>
+        <!-- End Nav Card -->
+    </div>
+    <div class="form-group" style="text-align: center;" id="showMoreButton">
+        <button id="ShowMoreProducts" class="button button-contactForm btn_1 boxed-btn">Show More Products</button>
+    </div>
+</section>
+
+@section Scripts
+ {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+
+
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="~/js/ProductIndex.js"></script>
+    <!--================HERE THE JS Products RESULT THAT WILL INSERT IN <div class="comment-list">!=================-->
+    <script id="resultsProdcuts" type="text/html">
+        <div class="col-xl-4 col-lg-4 col-md-6">
+            <div class="single-product mb-60">
+                <div class="product-img">
+                    <a href="/Products/Details/${id}">
+                        <img src="${imageUrl}" width="370" height="403" alt="">
+                    </a>
+                </div>
+
+                <div class="product-caption">
+                    <h4><a href="/Products/Details/${id}">${name}</a></h4>
+                    <div class="price">
+                        <ul>
+                            <li>₪${price}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
+}
+<!-- Latest Products End -->

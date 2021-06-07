@@ -1,0 +1,144 @@
+﻿@model IEnumerable<SportWiz66.Models.Location>
+
+@{ ViewData["Title"] = "Contact Us"; }
+<link rel="stylesheet" href="~/css/SocialMedia.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- slider Area Start-->
+<div class="slider-area ">
+    <!-- Mobile Menu -->
+    <div class="single-slider slider-height2 d-flex align-items-center" data-background="assets/img/hero/category.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap text-center">
+
+                        <h2>Contact Us</h2>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- slider Area End-->
+<!-- ================ contact section start ================= -->
+<section class="contact-section">
+    <div class="container">
+        <div class="d-none d-sm-block mb-5 pb-4">
+            <!-- ================ MAP SHOULD ENETER RIGHT HERE! ================= -->
+            <div id="map" style="height: 480px; position: relative; overflow: hidden;">
+                <div id="map"></div>
+                <script defer
+                        src="https://maps.googleapis.com/maps/api/js?key=KEY"></script>
+                <script>
+                    var geocoder;
+                    var map;
+                    var marker;
+                    function initialize() {
+                        //finding adress and mark location service
+                        geocoder = new google.maps.Geocoder();
+
+                        //set map center
+                        map = new google.maps.Map(document.getElementById("map"), {
+                            center: { lat: 31.857960, lng: 34.821380 },
+                            zoom: 8,
+                        });
+
+                        //ajax call to get locations from controller
+                        $.ajax({
+                            url: '/Locations/GetLocations',
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function (data) {
+                                // send the locations to geocodeAddress serivce
+                                $.each(data, function (index, location) {
+                                    geocodeAddress(geocoder, map, location);
+                                });
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert(xhr.status);
+                                alert(thrownError);
+                            }
+                        });
+                    }
+
+                    //finding adress and mark location service, get adressList from ajax
+                    function geocodeAddress(geocoder, resultsMap, location) {
+                        geocoder.geocode({ address: location.adress }, (results, status) => {
+                            if (status === "OK") {
+                                resultsMap.setCenter(results[0].geometry.location);
+                                marker = new google.maps.Marker({
+                                    map: resultsMap,
+                                    position: results[0].geometry.location,
+                                    animation: google.maps.Animation.DROP,
+                                    label: { color: 'black', fontWeight: 'bold', fontSize: '8px', text: location.name }
+                                });
+                                marker.addListener("click", toggleBounce);
+                            } else {
+                                alert("Geocode was not successful for the following reason: " + status);
+                            }
+                        });
+                    }
+
+                    function toggleBounce() {
+                        if (marker.getAnimation() !== null) {
+                            marker.setAnimation(null);
+                        } else {
+                            marker.setAnimation(google.maps.Animation.BOUNCE);
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12">
+                <h2 class="contact-title">Get in Touch</h2>
+            </div>
+            <div class="col-lg-8">
+
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-home"></i></span>
+                    <div class="media-body">
+                        <h3>Herzliya, Israel</h3>
+                        <p>Hashunit 2</p>
+                    </div>
+                </div>
+
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                    <div class="media-body">
+                        <h3>+972 0484533978</h3>
+                        <p>Not available on Saturdays</p>
+                    </div>
+                </div>
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><i class="ti-email"></i></span>
+                    <div class="media-body">
+                        <h3>SportWiz6@Gmail.Com</h3>
+                        <p>
+                            Send us your questions/requests anytime <br />
+
+                        </p>
+                        <!----Social media-->
+                        <a href="https://www.facebook.com/sport.wiz.9" class="fa fa-facebook"></a>
+                        <a href="https://twitter.com/SportWiz6" class="fa fa-twitter"></a>
+                        <a href="https://www.instagram.com/sportwiz6/" class="fa fa-instagram"></a>
+                        <!----End of social media-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================ contact section end ================= -->
+
+
+@section Scripts{
+
+
+
+}

@@ -1,0 +1,79 @@
+﻿@model SportWiz66.Models.Product
+
+@{ ViewData["Title"] = "Edit"; }
+
+<div class="container">
+    <h4>Create Category</h4>
+    <hr />
+    <div class="billing_details">
+        <div class="row">
+            <div class="col-lg-8" style="background:#f7f7f7;">
+                <br />
+                <i style="font-size:14px; color: #415094; font-weight: 500;">Edit Product</i>
+
+                <form id="DetailsForm" class="row contact_form" asp-action="Edit" method="post">
+                    <div class="col-md-12 form-group">
+                    </div>
+                    <div class="col-md-6 form-group p_star">
+                        <input asp-for="Name" class="form-control" placeholder="Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                        <input asp-for="Description" class="form-control" placeholder="Description">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                        <input asp-for="ImageUrl" class="form-control" placeholder="Main Image">
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                        <input asp-for="FrontImageUrl" class="form-control" placeholder="Front Image">
+                        <span asp-validation-for="FrontImageUrl" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-12 form-group p_star">
+                        <input asp-for="BackImageUrl" class="form-control" placeholder="Back Image">
+                        <span asp-validation-for="BackImageUrl" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4 form-group p_star">
+                        <input asp-for="Price" class="form-control" placeholder="Price">
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-8 form-group p_star">
+                    </div>
+                    <div class="col-md-4 form-group p_star">
+                        <select name="BrandId" class="form-control" asp-items="@ViewBag.Brands">
+                            <option value="null" disabled selected>Brand</option>
+                        </select>
+                        <span asp-validation-for="Brand" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-8 form-group p_star">
+                    </div>
+                    <div class="col-md-4 form-group p_star">
+                        <select name="CategoryId" class="form-control" asp-items="@ViewBag.Categories">
+                            <option value="null" disabled selected>Category</option>
+                        </select>
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-8 form-group p_star">
+                    </div>
+
+
+                    <div class="form-group form-check">
+                        <input type="checkbox" asp-for="InStock" /> @Html.DisplayNameFor(model => model.InStock)
+                    </div>
+
+
+                    <div class="col-md-12 form-group p_star">
+                    </div>
+                    <div class="col-md-4 form-group p_star">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

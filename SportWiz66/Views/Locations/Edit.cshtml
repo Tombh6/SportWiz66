@@ -1,0 +1,40 @@
+﻿@model SportWiz66.Models.Location
+
+@{ ViewData["Title"] = "Edit"; }
+
+<div class="container">
+    <h4>Edit Location Details</h4>
+    <hr />
+    <div class="billing_details">
+        <div class="row">
+            <div class="col-lg-8" style="background:#f7f7f7;">
+                <br />
+                <i style="font-size:14px; color: #415094; font-weight: 500;">Edit Location</i>
+                <form id="DetailsForm" class="row contact_form" asp-action="Edit" method="post">
+                    <div class="col-md-12 form-group">
+                    </div>
+                    <div class="col-md-6 form-group p_star">
+                        <input asp-for="Name" class="form-control" placeholder="Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 form-group p_star">
+                    </div>
+                    <div class="col-md-6 form-group p_star">
+                        <input asp-for="Adress" class="form-control" placeholder="Description">
+                        <span asp-validation-for="Adress" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 form-group p_star">
+                    </div>
+                    <div class="col-md-6 form-group p_star">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

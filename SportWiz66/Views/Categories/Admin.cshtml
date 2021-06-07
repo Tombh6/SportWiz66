@@ -1,0 +1,65 @@
+﻿@model IEnumerable<SportWiz66.Models.Category>
+
+@{ ViewData["Title"] = "Categories Management"; }
+
+
+<div class="container">
+    <h4>Categories</h4>
+    <a class="black-color" asp-action="Create">Create New Category</a>
+    <form asp-action="Filter" id="filterform">
+        <div class="form-box f-right">
+            <input id="filter" name="term" autocomplete="off" class="form-control" placeholder="search..." />
+        </div>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        <a class="black-color" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+        <a class="black-color" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+        <a class="black-color" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+    </td>
+</tr>            }
+        </tbody>
+    </table>
+
+</div>
+@section Scripts{
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="~/js/filter.js"></script>
+    <script id="restuls" type="text/html">
+        <tr>
+            <td>
+                ${id}
+            </td>
+            <td>
+                ${name}
+            </td>
+            <td>
+                <a class="black-color" href="/Categories/Edit/${id}">Edit</a>|
+                <a class="black-color" href="/Categories/Details/${id}">Details</a>|
+                <a class="black-color" href="/Categories/Delete/${id}">Delete</a>
+            </td>
+        </tr>
+    </script>
+}

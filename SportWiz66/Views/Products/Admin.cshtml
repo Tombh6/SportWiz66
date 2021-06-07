@@ -1,0 +1,145 @@
+﻿@model IEnumerable<SportWiz66.Models.Product>
+@{ ViewData["Title"] = "Products Management"; }
+
+
+<div class="container" style="max-width:1370px;">
+    <h4>Products</h4>
+    <a class="black-color" asp-action="Statistics">Statistics</a> <br />
+    <a class="black-color" asp-action="Create">Create New Product</a>
+    <form asp-action="Filter" id="filterform">
+        <div class="form-box f-right">
+            <input id="filter" name="term" autocomplete="off" class="form-control" placeholder="search..." />
+        </div>
+    </form>
+    <div class="cart_inner">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th style="width: 9%;">
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Brand)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Category)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.InStock)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TotalPurchases)
+                        </th>
+                        <th style="width: 9%;">
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!--================Items Area =================-->
+                    @foreach (var item in Model)
+                    {
+
+        <tr class="@item.Id">
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+
+            <td>
+                <div class="media">
+                    <div class="d-flex">
+                        <a asp-action="Details" asp-controller="Products" asp-route-id="@item.Id"> <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="">  </a>
+                    </div>
+                    <div class="media-body">
+                        <a asp-action="Details" asp-controller="Products" asp-route-id="@item.Id"> <p>@Html.DisplayFor(modelItem => item.Name) <br /> @Html.DisplayFor(modelItem => item.Description)</p>  </a>
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPurchases)
+            </td>
+            <td>
+                <a class="black-color" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="black-color" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a class="black-color" asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a class="tweet" id="@item.Id" href="#"><i class="fab fa-twitter"></i></a>
+            </td>
+        </tr>}
+                    <!--================Items Area END =================-->
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="~/js/filter.js"></script>
+    <script src="~/js/tweet.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <script id="restuls" type="text/html">
+        <tr class=" ${id}">
+            <td>
+                ${id}
+            </td>
+
+            <td>
+                <div class="media">
+                    <div class="d-flex">
+                        <a href="/Products/Details/${id}"> <img src="${img}" alt="">  </a>
+                    </div>
+                    <div class="media-body">
+                        <a href="/Products/Details/${id}"> <p>${name} <br /> ${description}</p>  </a>
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                ₪${price}
+            </td>
+
+            <td>
+                ${brand}
+            </td>
+            <td>
+                ${category}
+            </td>
+            <td>
+                <input type="checkbox" disabled checked="${instock}" />
+            </td>
+            <td>
+                ${totalpurchases}
+            </td>
+            <td>
+                <a class="black-color" href="/Products/Edit/${id}">Edit</a>|
+                <a class="black-color" href="/Products/Details/${id}">Details</a>|
+                <a class="black-color" href="/Products/Delete/${id}">Delete</a>|
+                <a class="tweet" id="${id}" href="#"><i class="fab fa-twitter"></i></a>
+            </td>
+        </tr>
+    </script>
+}

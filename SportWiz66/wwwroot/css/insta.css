@@ -1,0 +1,32 @@
+﻿.instaimg img{ margin-bottom:30px;}
+.instaimg img:hover{
+    opacity:1;
+    /*-moz-opacity:0.8;
+    -webkit-opacity:0.8;*/
+
+}
+.instaimg img {
+   
+    -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+}
+
+    .instaimg img:hover {
+        filter: none;
+        -webkit-filter: grayscale(0%);
+    }
+
+.instaimg img {
+    width: 90%;
+    background-color: white;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+img {
+    width: 100%
+}
+
+div.container {
+    text-align: center;
+    padding: 10px 20px;
+}
+

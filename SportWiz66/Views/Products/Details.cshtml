@@ -1,0 +1,157 @@
+﻿@model SportWiz66.Models.Product
+@{ ViewData["Title"] = "Details"; }
+<!--================Page Area =================-->
+<section class="product_image_area">
+    <div class="container">
+        <div class="billing_details">
+            <div class="row">
+                <!--================Image Area =================-->
+                <div class="col-md-6">
+                    <div class="product_img_slide owl-carousel">
+                        <div class="single_product_img">
+                            <img src="@Model.ImageUrl" alt="#" class="img-fluid">
+                        </div>
+                        <div class="single_product_img">
+                            <img src="@Model.FrontImageUrl" alt="#" class="img-fluid">
+                        </div>
+                        <div class="single_product_img">
+                            <img src="@Model.BackImageUrl" alt="#" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <!--================End Image Area =================-->
+                <!--================Description Area =================-->
+                <div class="col-md-6">
+                    <div class="order_box">
+                        <p>
+                            <h1>
+                                @Model.Name
+                            </h1>
+                            <h6>
+                                Brand: @Html.DisplayFor(Model => Model.Brand.Name)
+                            </h6>
+                            <hr />
+                            @Model.Description <br />
+                            <hr />
+                            <h6>Price: @Html.DisplayFor(Model => Model.Price)</h6>
+                        </p>
+
+
+                        <!--================Buttons Area =================-->
+                        <div class="card_area">
+                            <center>
+                                <p id="serverAnswer" style="background-color:lightblue;">
+                                    <!--================Server Answer will be inserted here using JS =================-->
+                                </p>
+                            </center>
+                            <div class="add_to_cart">
+                                <a class="btn_3" id="addToCart" style="cursor: pointer;">Add To Cart</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--================Description END =================-->
+            </div>
+        </div>
+
+
+        <!--================Review Section=================-->
+        <div class="comments-area">
+            <div id="counter"><h4><span><i class="fa fa-comments"></i> @Model.Reviews.Count Reviews</span></h4></div>
+
+
+            <div class="comment-list">
+                <!--================HERE THE JS Review RESULT WILL INSERT!=================-->
+            </div>
+            <div class="form-group" style="text-align: center" ; id="showMoreButton">
+                <button id="ShowMoreReviews" class="button button-contactForm btn_1 boxed-btn">Show More Reviews</button>
+            </div>
+
+            <!--================Leave a Review Section=================-->
+            @{ if (@Context.User.Claims.FirstOrDefault(c => c.Type == "Name") != null) //if User  logged in
+                            {
+
+                <div class="comment-form" id="writeReview">
+                    <h4>
+                        Hey @Context.User.Claims.FirstOrDefault(c => c.Type == "Name")?.Value, Would you like to Leave a Review?
+                    </h4>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input class="form-control" id="Title" type="text" placeholder="Title, 3-50 lenght">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <textarea class="form-control w-100" id="Content" cols="30" rows="9" placeholder="Write Review, max lenght of 2048 " maxlength="2048"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button id="CommentSubmit" class="button button-contactForm btn_1 boxed-btn">Send Review</button>
+                    </div>
+                </div> } }
+            <!--================END: Leave a Review Section=================-->
+
+
+
+        </div>
+    </div>
+</section>
+
+
+
+@section Scripts
+ {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+
+    <!--================ THE JS That gets Reviews tmpl!=================-->
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script src="~/js/ProductDetails.js"></script>
+    <!--================HERE THE JS Review RESULT THAT WILL INSERT IN <div class="comment-list">!=================-->
+    <script id="results" type="text/html">
+        <div class="single-comment justify-content-between d-flex" style="background-color:#fbf9ff; border-radius: 15px 50px 30px;" id=${id}>
+            <div class="user justify-content-between d-flex">
+                <div class="thumb">
+                    <img src="~/assets/img/comment/comment_1.png" alt="">
+                </div>
+                <div class="desc">
+
+                    <p class="comment">
+                        @{ if ((@Context.User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Role))?.Value == "Admin")
+                                            {
+                            <button id="${id}" class="genric-btn primary small" style="text-align: right" ;>Delete</button> } }
+                        <h3>${title}</h3>
+
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <li><span><i class="fa fa-user"></i>  Sent by: ${username} at ${date} </span></li>
+                        </ul>
+                        <h4>${content}</h4><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr />
+
+
+    </script>
+
+
+
+}
+
+
+
+<!-- JS here -->
+<!-- All JS Custom Plugins Link Here here -->
+<!-- swiper js -->
+<script src="~/assets/js/swiper.min.js"></script>
+<!-- swiper js -->
+<script src="~/assets/js/mixitup.min.js"></script>
+
+
+
+
