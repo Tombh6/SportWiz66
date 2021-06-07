@@ -6,9 +6,17 @@
 
 }
 .instaimg img {
-   
     -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+    /*-webkit-touch-callout: none;
+    pointer-events: none;
+    touch-action: unset;*/
 }
+
+/*.img1 {
+    -webkit-touch-callout: none;
+    pointer-events: none;
+    touch-action: unset;
+}*/
 
     .instaimg img:hover {
         filter: none;
@@ -21,6 +29,8 @@
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+
+
 img {
     width: 100%
 }
@@ -29,4 +39,23 @@ div.container {
     text-align: center;
     padding: 10px 20px;
 }
+
+.title {
+    text-align: center;
+    color: gold; 
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
 
