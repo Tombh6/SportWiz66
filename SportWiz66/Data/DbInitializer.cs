@@ -289,7 +289,7 @@ namespace SportWiz66.Data
 
                 _context.Location.Add(Home);
 
-                Location College = new Location()
+                Location College = new Location() /*college addres*/
                 {
                     Name = "Colman",
                     Adress = "Elie Wiesel St 2, Rishon LeZion",
