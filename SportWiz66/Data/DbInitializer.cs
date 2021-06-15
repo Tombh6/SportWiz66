@@ -16,7 +16,7 @@ namespace SportWiz66.Data
             //this will delete existing database
             //_context.Database.EnsureDeleted();
 
-            //Addin Accounts
+            //Admin Accounts
             if (!(_context.Account.Any(i => i.Type == UserType.Admin)))
             {
                 Account TomBh = new Account()
