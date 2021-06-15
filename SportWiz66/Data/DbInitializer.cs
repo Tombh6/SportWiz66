@@ -281,7 +281,7 @@ namespace SportWiz66.Data
             //Addin Locations
             if (!(_context.Location.Any()))
             {
-                Location Home = new Location()
+                Location Home = new Location() /*Home addres*/
                 {
                     Name = "Home",
                     Adress = "Hashunit St 2, Herzliya",
