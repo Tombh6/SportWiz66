@@ -297,7 +297,7 @@ namespace SportWiz66.Data
 
                 _context.Location.Add(College);
 
-                Location Branch = new Location()
+                Location Branch = new Location() /*Branch addres*/
                 {
                     Name = "Branch",
                     Adress = "TLV Fashion Mall, Tel-Aviv",
