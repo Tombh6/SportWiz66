@@ -43,7 +43,7 @@ namespace SportWiz66.Data
                     Name = "Not Found",
                     Description = "Brand Not Found",
                 };
-                _context.Brand.Add(notFound);
+                _context.Brand.Add(notFound);/*In case the brand is'nt found'*/
 
                 Brand Gasp = new Brand()
                 {
