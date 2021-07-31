@@ -3,7 +3,7 @@
 @{ ViewData["Title"] = "Contact Us"; }
 <link rel="stylesheet" href="~/css/SocialMedia.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="~/css/Locations.css">
 <!-- slider Area Start-->
 <div class="slider-area ">
     <!-- Mobile Menu -->
@@ -28,16 +28,34 @@
     <div class="container">
         <div class="d-none d-sm-block mb-5 pb-4">
             <!-- ================ MAP SHOULD ENETER RIGHT HERE! ================= -->
-            <div id="map" style="height: 480px; position: relative; overflow: hidden;">
+            
+            <div id="map"></div>
+           <script>
+               function initMap() {
+                   var location = { lat: 31.969400, lng: 34.808840 };
+                   var map = new google.maps.Map(document.getElementById("map"), {
+                       zoom: 4,
+                       center: location
+                   });
+               }
+
+           </script>
+            <script async defer src:"https://maps.googleapis.com/maps/api/
+                    js?key=AIzaSyC63FBMzAQIncm5JRKg4H9BcjGFOD7Bi_M&callback=initMap"></script>
+
+
+
+
+            @*<div id="map" style="height: 480px; position: relative; overflow: hidden;">
                 <div id="map"></div>
                 <script defer
-                        src="https://maps.googleapis.com/maps/api/js?key=AvfOMNtGyGVE96XJJygns-RQNW1crvi_I8cyKdqLwKlLBg7YlAUkrENfQLXBqA-w"></script>
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC63FBMzAQIncm5JRKg4H9BcjGFOD7Bi_M"></script>
                 <script>
                     var geocoder;
                     var map;
                     var marker;
                     function initialize() {
-                        //finding adress and mark location service
+                        //finding address and mark location service
                         geocoder = new google.maps.Geocoder();
 
                         //set map center
@@ -91,7 +109,7 @@
                     }
                 </script>
             </div>
-        </div>
+        </div>*@
 
 
         <div class="row">
