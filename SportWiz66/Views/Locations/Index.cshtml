@@ -22,6 +22,14 @@
     </div>
 </div>
 
+<a href="https://time.is/Holon" id="time_is_link" rel="nofollow" style="font-size:36px"></a>
+<span id="Holon_z41e" style="font-size:36px"></span>
+<script src="//widget.time.is/t.js"></script>
+<script>
+    time_is_widget.init({ Holon_z41e: {} });
+</script>
+
+
 <!-- slider Area End-->
 <!-- ================ contact section start ================= -->
 <section class="contact-section">
@@ -30,96 +38,84 @@
             <!-- ================ MAP SHOULD ENETER RIGHT HERE! ================= -->
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3377.4962651953097!2d34.799019970408196!3d32.163889943911194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d48ea89240b5b%3A0x36d294f21283abb6!2z15TXqdeV16DXmdeqIDIsINeU16jXptec15nXlA!5e0!3m2!1siw!2sil!4v1627817122144!5m2!1siw!2sil" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
-            <div id="map"></div>
-            <script>
-                function initMap() {
-                    var location = { lat: 31.969400, lng: 34.808840 };
-                    var map = new google.maps.Map(document.getElementById("map"), {
-                        zoom: 4,
-                        center: location
-                    });
-                }
+            @*<div id="map"></div>
+                <script>
+                    function initMap() {
+                        var location = { lat: 31.969400, lng: 34.808840 };
+                        var map = new google.maps.Map(document.getElementById("map"), {
+                            zoom: 4,
+                            center: location
+                        });
+                    }
 
-            </script>
+                </script>*@
             @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCdA6uEi4i_M2kg9Eg5YxrMlgU7Rvq68&callback=initMap"></script>*@
-
-            <a href="https://time.is/Holon" id="time_is_link" rel="nofollow" style="font-size:36px">הזמן ב-ישראל:</a>
-            <span id="Holon_z41e" style="font-size:36px"></span>
-            <script src="//widget.time.is/t.js"></script>
-            <script>
-                time_is_widget.init({ Holon_z41e: {} });
-            </script>
-
-
-
-
-
 
 
             @*<div id="map" style="height: 480px; position: relative; overflow: hidden;">
-                <div id="map"></div>
-                <script defer
-                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC63FBMzAQIncm5JRKg4H9BcjGFOD7Bi_M"></script>
-                <script>
-                    var geocoder;
-                    var map;
-                    var marker;
-                    function initialize() {
-                        //finding address and mark location service
-                        geocoder = new google.maps.Geocoder();
+                        <div id="map"></div>
+                        <script defer
+                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC63FBMzAQIncm5JRKg4H9BcjGFOD7Bi_M"></script>
+                        <script>
+                            var geocoder;
+                            var map;
+                            var marker;
+                            function initialize() {
+                                //finding address and mark location service
+                                geocoder = new google.maps.Geocoder();
 
-                        //set map center
-                        map = new google.maps.Map(document.getElementById("map"), {
-                            center: { lat: 31.857960, lng: 34.821380 },
-                            zoom: 8,
-                        });
-
-                        //ajax call to get locations from controller
-                        $.ajax({
-                            url: '/Locations/GetLocations',
-                            type: 'GET',
-                            dataType: 'json',
-                            success: function (data) {
-                                // send the locations to geocodeAddress serivce
-                                $.each(data, function (index, location) {
-                                    geocodeAddress(geocoder, map, location);
+                                //set map center
+                                map = new google.maps.Map(document.getElementById("map"), {
+                                    center: { lat: 31.857960, lng: 34.821380 },
+                                    zoom: 8,
                                 });
-                            },
-                            error: function (xhr, ajaxOptions, thrownError) {
-                                alert(xhr.status);
-                                alert(thrownError);
-                            }
-                        });
-                    }
 
-                    //finding adress and mark location service, get adressList from ajax
-                    function geocodeAddress(geocoder, resultsMap, location) {
-                        geocoder.geocode({ address: location.adress }, (results, status) => {
-                            if (status === "OK") {
-                                resultsMap.setCenter(results[0].geometry.location);
-                                marker = new google.maps.Marker({
-                                    map: resultsMap,
-                                    position: results[0].geometry.location,
-                                    animation: google.maps.Animation.DROP,
-                                    label: { color: 'black', fontWeight: 'bold', fontSize: '8px', text: location.name }
+                                //ajax call to get locations from controller
+                                $.ajax({
+                                    url: '/Locations/GetLocations',
+                                    type: 'GET',
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        // send the locations to geocodeAddress serivce
+                                        $.each(data, function (index, location) {
+                                            geocodeAddress(geocoder, map, location);
+                                        });
+                                    },
+                                    error: function (xhr, ajaxOptions, thrownError) {
+                                        alert(xhr.status);
+                                        alert(thrownError);
+                                    }
                                 });
-                                marker.addListener("click", toggleBounce);
-                            } else {
-                                alert("Geocode was not successful for the following reason: " + status);
                             }
-                        });
-                    }
 
-                    function toggleBounce() {
-                        if (marker.getAnimation() !== null) {
-                            marker.setAnimation(null);
-                        } else {
-                            marker.setAnimation(google.maps.Animation.BOUNCE);
-                        }
-                    }
-                </script>
-            </div>
-        </div>*@
+                            //finding adress and mark location service, get adressList from ajax
+                            function geocodeAddress(geocoder, resultsMap, location) {
+                                geocoder.geocode({ address: location.adress }, (results, status) => {
+                                    if (status === "OK") {
+                                        resultsMap.setCenter(results[0].geometry.location);
+                                        marker = new google.maps.Marker({
+                                            map: resultsMap,
+                                            position: results[0].geometry.location,
+                                            animation: google.maps.Animation.DROP,
+                                            label: { color: 'black', fontWeight: 'bold', fontSize: '8px', text: location.name }
+                                        });
+                                        marker.addListener("click", toggleBounce);
+                                    } else {
+                                        alert("Geocode was not successful for the following reason: " + status);
+                                    }
+                                });
+                            }
+
+                            function toggleBounce() {
+                                if (marker.getAnimation() !== null) {
+                                    marker.setAnimation(null);
+                                } else {
+                                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>*@
 
 
             <div class="row">
