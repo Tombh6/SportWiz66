@@ -72,8 +72,8 @@ namespace SportWiz66.Controllers
         ///                                                  
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // Orders List
-        //writer:DaViD
+        
+        
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Admin()
         {
