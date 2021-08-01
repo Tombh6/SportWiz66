@@ -478,7 +478,7 @@ namespace SportWiz66.Controllers
             }
 
 
-            var userClient = new TwitterClient("XqNAjyVcdkIzq8vc28P3cxEiQ", "205VnT7an9dXuRcEdModn9sV7461YZMUUodUtUBSTv7HCiAiAu", "1399847438501007362-xC6XkYJkFrMo7HIE2Whfx6GP6wwpzf", "T6dn0ii6pHNQP4u2Ilr5rrX30BYx44gJyEy5T5CmPST0T");
+            var userClient = new TwitterClient("K2CfPa9r79luL0GqkPADUu9uK", "fn7Gcz8xAkvyEzFinXNKKiW6wMyqyaQyyfn0tzaDQSwnCUXHDH", "1399847438501007362-J9rUgQ7KqK6GTHT3RRzBYthVJy9uOz", "sTrPGkvHcUrQzVXFiuKmXZFR5NC8YVju4q8XWFIRpZ7IA");
             var publishedTweet = await userClient.Tweets.PublishTweetAsync("We got " + product.Name);
 
 
