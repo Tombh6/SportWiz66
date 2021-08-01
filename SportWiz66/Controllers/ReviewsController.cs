@@ -23,7 +23,7 @@ namespace SportWiz66.Controllers
         }
 
 
-        //writer: DaViD Manshari at 4am :(
+        
         //returns 5 reviews of certain product including the username to the JS ProductDetails
         public async Task<IActionResult> Index(int productId, int skipCount, int takeCount)
         {

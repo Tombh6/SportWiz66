@@ -63,7 +63,7 @@ namespace SportWiz66.Models
 
 
         /// <--------------------------------------------------------->
-        /// misc: Account Orders, Reviews List, Location & Payment Info By Da-vid.M
+        /// misc: Account Orders, Reviews List, Location & Payment Info 
         /// <--------------------------------------------------------->
 
         [DisplayName("Your orders")]

@@ -12,7 +12,7 @@ namespace SportWiz66.Models
     public class ShoppingCart
     {
         public int Id { get; set; }
-        //acount sessionID used to bind cart to costumer
+        //acount sessionID used to bind cart to customer
         public String AccountSessionID { get; set; }
 
         public ICollection<ShoppingCartItem> Items { get; set; }
