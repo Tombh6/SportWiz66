@@ -30,13 +30,6 @@
             <!-- ================ MAP SHOULD ENETER RIGHT HERE! ================= -->
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3377.4962651953097!2d34.799019970408196!3d32.163889943911194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d48ea89240b5b%3A0x36d294f21283abb6!2z15TXqdeV16DXmdeqIDIsINeU16jXptec15nXlA!5e0!3m2!1siw!2sil!4v1627817122144!5m2!1siw!2sil" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
-
-           
-
-
-
-
-
             <div id="map"></div>
             <script>
                 function initMap() {
@@ -48,7 +41,17 @@
                 }
 
             </script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCdA6uEi4i_M2kg9Eg5YxrMlgU7Rvq68&callback=initMap"></script>
+            @*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCdA6uEi4i_M2kg9Eg5YxrMlgU7Rvq68&callback=initMap"></script>*@
+
+            <a href="https://time.is/Holon" id="time_is_link" rel="nofollow" style="font-size:36px">הזמן ב-ישראל:</a>
+            <span id="Holon_z41e" style="font-size:36px"></span>
+            <script src="//widget.time.is/t.js"></script>
+            <script>
+                time_is_widget.init({ Holon_z41e: {} });
+            </script>
+
+
+
 
 
 
