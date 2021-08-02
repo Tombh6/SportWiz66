@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SportWiz66.Data;
-using SportWiz66.Models;
+using SportWiz66.Models;//TBH
 
 namespace SportWiz66.Controllers
 {
